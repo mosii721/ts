@@ -23,18 +23,11 @@ function App() {
     setFilters(filters.filter(f => f !== filter));
   };
 
-  const clearFilters = () => {
-    setFilters([]);
-  };
+  const clearFilters = () => setFilters([]);
 
   const filteredJobs = jobs.filter(job => {
-    const allCategories = [
-      job.role,
-      job.level,
-      ...(job.languages || []),
-      ...(job.tools || [])
-    ];
-    return filters.every(filter => allCategories.includes(filter));
+    const all = [ job.role, job.level, ...job.languages , ...job.tools ];
+    return filters.every((filter) => all.includes(filter));
   });
 
   return (
@@ -44,17 +37,10 @@ function App() {
         
         <div className="mb-6">
           {filters.length > 0 && (
-            <FilterBar 
-              filters={filters}
-              onFilterChange={removeFilter}
-              clearFilters={clearFilters}
-            />
+            <FilterBar  filters={filters} onRemoveFilter={removeFilter} clearFilters={clearFilters} />
           )}
         </div>
-        <JobListings 
-          jobs={filteredJobs}
-          onFilterChange={addFilter}
-        />
+        <JobListings  jobs={filteredJobs} onFilterChange={addFilter} />
       </div>
     </div>
   );
