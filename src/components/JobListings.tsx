@@ -14,18 +14,18 @@ return (
           <div className="flex flex-col md:flex-row md:items-center gap-2 flex-1">
             <img src={job.logo} alt='logo' className="w-16 h-16 md:w-20 md:h-20  md:mt-0"/>
             <div className="space-y-2 flex-1">
-              <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4">
                 <h2 className="text-primary font-bold text-teal-500">{job.company}</h2>
                 <div className="flex gap-2">
                   {job.new && (
-                    <span className="bg-primary bg-teal-500 text-white text-xs uppercase px-2 py-1 rounded-full"> New! </span>
+                    <span className="bg-teal-500 text-white text-xs uppercase px-2 py-1 rounded-full"> New! </span>
                   )}
                   {job.featured && (
                     <span className="bg-teal-900 text-white text-xs uppercase px-2 py-1 rounded-full"> Featured </span>
                   )}
                 </div>
               </div>
-              <h3 className="text-veryDark font-bold  text-lg hover:text-primary cursor-pointer transition-colors"> {job.position} </h3>
+              <h3 className="font-bold  text-lg hover:text-primary cursor-pointer transition-colors"> {job.position} </h3>
               <div className="flex gap-4 text-dark text-sm text-gray-400">
                 <span>{job.postedAt}</span>
                 <span>•</span>
@@ -39,7 +39,7 @@ return (
             <div className="flex flex-wrap gap-4">
               {[job.role, job.level, ...(job.languages || []), ...(job.tools || [])].map(
                 (category, i) => (
-                  <button key={i} onClick={() => onFilterChange(category)} className="bg-filter text-primary font-bold px-3 py-1 text-teal-500 rounded hover:bg-primary hover:text-white hover:bg-teal-500 transition-colors"> {category} </button>
+                  <button key={i} onClick={() => onFilterChange(category)} className="text-primary font-bold px-3 py-1 text-teal-500 rounded hover:bg-primary hover:text-white hover:bg-teal-500 transition-colors"> {category} </button>
                 )
               )}
             </div>
