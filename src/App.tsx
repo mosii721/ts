@@ -2,16 +2,15 @@ import { useEffect, useState } from 'react';
 import type { Job, FilterType } from './types';
 import FilterBar from './components/FilterBar';
 import JobListings from './components/JobListings';
+import data from './data.json';
 
 
 function App() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [filters, setFilters] = useState<FilterType[]>([]);
 
-  useEffect(() => {
-    fetch('/data.json')
-      .then(res => res.json())
-      .then(data => setJobs(data));
+    useEffect(() => {
+    setJobs(data);
   }, []);
 
   const addFilter = (filter: FilterType) => {
